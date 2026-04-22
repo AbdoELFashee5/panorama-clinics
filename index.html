@@ -74,6 +74,164 @@
       color: var(--white);
     }
 
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    a, button {
+      cursor: pointer;
+    }
+
+    /* ── LIQUID GLASS BUTTONS ── */
+    .btn-liquid-glass,
+    .btn-liquid-ghost,
+    .btn-liquid-white {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: transparent;
+      transition: transform var(--transition), color var(--transition);
+      overflow: visible;
+      isolation: isolate;
+    }
+
+    .btn-liquid-glass { color: white; }
+    .btn-liquid-ghost  { color: var(--gold-dark); letter-spacing: 0.08em; font-weight: 600; }
+    .btn-liquid-white  { color: var(--gold-dark); }
+
+    .btn-liq-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      z-index: -1;
+      transition: filter 0.45s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-liquid-glass .btn-liq-bg {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+      filter: url(#liq-idle);
+    }
+
+    .btn-liquid-ghost .btn-liq-bg {
+      background: rgba(201, 168, 76, 0.08);
+      border: 2px solid rgba(201, 168, 76, 0.5);
+      backdrop-filter: blur(12px);
+      filter: url(#liq-idle);
+    }
+
+    .btn-liquid-white .btn-liq-bg {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      filter: url(#liq-idle);
+    }
+
+    .btn-liq-shine {
+      position: absolute;
+      top: 3px;
+      left: 12px;
+      right: 12px;
+      height: 38%;
+      border-radius: 100px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.32), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .btn-liq-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-liquid-glass svg,
+    .btn-liquid-white svg { width: 16px; height: 16px; }
+    .btn-liquid-ghost svg  { width: 14px; height: 14px; }
+
+    .btn-liquid-glass:hover,
+    .btn-liquid-ghost:hover,
+    .btn-liquid-white:hover { transform: translateY(-3px); }
+
+    .btn-liquid-glass:hover .btn-liq-bg {
+      filter: url(#liq-hover);
+      box-shadow: 0 14px 44px rgba(201, 168, 76, 0.55);
+    }
+    .btn-liquid-ghost:hover .btn-liq-bg {
+      filter: url(#liq-hover);
+      background: var(--gold);
+    }
+    .btn-liquid-ghost:hover { color: white; }
+    .btn-liquid-white:hover .btn-liq-bg {
+      filter: url(#liq-hover);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.18);
+    }
+
+    /* nav phone — smaller liquid glass */
+    .nav-phone-liq {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      color: white;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: transform var(--transition);
+      border: none;
+      background: transparent;
+      isolation: isolate;
+    }
+    .nav-phone-liq .btn-liq-bg {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+      filter: url(#liq-idle);
+    }
+    .nav-phone-liq:hover { transform: translateY(-2px); }
+    .nav-phone-liq:hover .btn-liq-bg {
+      filter: url(#liq-hover);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.45);
+    }
+    .nav-phone-liq svg { width: 16px; height: 16px; position: relative; }
+
+    /* ── TEXT REVEAL ── */
+    .text-reveal .reveal-word {
+      display: inline-block;
+      opacity: 0.12;
+      transition: opacity 0.55s ease;
+      will-change: opacity;
+    }
+    .text-reveal .reveal-word.lit {
+      opacity: 1;
+    }
+
+    /* ── CONTAINER SCROLL ANIMATION ── */
+    .scroll-anim-outer {
+      perspective: 1200px;
+      perspective-origin: 50% -10%;
+    }
+    .scroll-anim-inner {
+      transform-origin: top center;
+      will-change: transform;
+      transition: transform 0.08s linear;
+    }
+
     /* ── NAV ── */
     .nav {
       position: fixed;
@@ -604,16 +762,16 @@
     .result-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 50px rgba(201, 168, 76, 0.1);
+      cursor: pointer;
     }
 
     .result-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: block;
       position: relative;
     }
 
     .result-img {
-      aspect-ratio: 3/4;
+      width: 100%;
       background-size: cover;
       background-position: center;
     }
@@ -1037,6 +1195,16 @@
 
       .hero {
         padding: 100px 20px 60px;
+        background-position: center top;
+        min-height: 100svh;
+      }
+
+      .hero::before {
+        background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.97) 0%,
+          rgba(255, 255, 255, 0.93) 55%,
+          rgba(255, 255, 255, 0.45) 80%,
+          rgba(255, 255, 255, 0.0) 100%);
       }
 
       .services-grid,
@@ -1063,6 +1231,18 @@
 
       .hero-title {
         font-size: 2.2rem;
+      }
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .animate {
+        opacity: 1;
+        animation: none;
+      }
+      * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
       }
     }
 
@@ -1104,6 +1284,20 @@
 
 <body>
 
+  <!-- LIQUID GLASS SVG FILTERS -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;pointer-events:none;overflow:hidden">
+    <defs>
+      <filter id="liq-idle" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feTurbulence id="liq-turb-idle" type="fractalNoise" baseFrequency="0.018 0.032" numOctaves="3" seed="7" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="liq-hover" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+        <feTurbulence id="liq-turb-hover" type="fractalNoise" baseFrequency="0.035 0.06" numOctaves="3" seed="12" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- NAV -->
   <nav class="nav" id="nav">
     <a href="#" class="nav-logo">
@@ -1115,10 +1309,11 @@
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="https://wa.me/201030777788" class="nav-phone" target="_blank">
+    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="nav-phone-liq" target="_blank" rel="noopener">
+      <span class="btn-liq-bg"></span>
+      <span class="btn-liq-shine"></span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path
-          d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
       </svg>
       01030777788
     </a>
@@ -1135,7 +1330,11 @@
     <a href="#results" onclick="this.parentElement.classList.remove('open')">Results</a>
     <a href="#testimonials" onclick="this.parentElement.classList.remove('open')">Reviews</a>
     <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
-    <a href="https://wa.me/201030777788" class="btn-primary" style="font-size:1rem;">Call 01030777788</a>
+    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-liquid-glass" target="_blank" rel="noopener" style="font-size:0.9rem;">
+      <span class="btn-liq-bg"></span>
+      <span class="btn-liq-shine"></span>
+      <span class="btn-liq-content">WhatsApp 01030777788</span>
+    </a>
   </div>
 
   <!-- HERO -->
@@ -1143,17 +1342,24 @@
     <div class="hero-content animate">
       <div class="hero-eyebrow">Premium Aesthetic Medicine</div>
       <h1 class="hero-title">Your Beauty, <br>Our <em>Expertise</em></h1>
-      <p class="hero-sub">Panorama Hair &amp; Skin Clinics — your premier destination for cosmetic surgery, dermatology,
+      <p class="hero-sub text-reveal">Panorama Hair &amp; Skin Clinics — your premier destination for cosmetic surgery, dermatology,
         laser treatments, and complete aesthetic care.</p>
       <div class="hero-ctas">
-        <a href="https://wa.me/201030777788" class="btn-primary" target="_blank">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path
-              d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-          </svg>
-          Book Now
+        <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-liquid-glass" target="_blank" rel="noopener">
+          <span class="btn-liq-bg"></span>
+          <span class="btn-liq-shine"></span>
+          <span class="btn-liq-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            Book Now
+          </span>
         </a>
-        <a href="#services" class="btn-ghost">Our Services</a>
+        <a href="#services" class="btn-liquid-ghost">
+          <span class="btn-liq-bg"></span>
+          <span class="btn-liq-shine"></span>
+          <span class="btn-liq-content">Our Services</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1176,7 +1382,7 @@
       <div>
         <div class="section-tag">What We Offer</div>
         <h2 class="section-title">Comprehensive <em>Aesthetic</em> Care</h2>
-        <p class="section-sub">From cosmetic surgery to nutrition counseling, we provide a full spectrum of beauty and
+        <p class="section-sub text-reveal">From cosmetic surgery to nutrition counseling, we provide a full spectrum of beauty and
           wellness treatments.</p>
       </div>
     </div>
@@ -1248,20 +1454,23 @@
     <div class="results-header">
       <div class="section-tag">Real Results</div>
       <h2 class="section-title">Before &amp; <em>After</em></h2>
-      <p class="section-sub">See the transformative results our patients have experienced with our expert treatments.
-      </p>
+      <p class="section-sub text-reveal">See the transformative results our patients have experienced with our expert treatments.</p>
     </div>
+    <div class="scroll-anim-outer">
+    <div class="scroll-anim-inner" id="results-scroll-anim">
     <div class="results-grid">
       <style>
         .result-img {
           overflow: hidden;
-          border-radius: 12px;
+          border-radius: 12px 12px 0 0;
+          width: 100%;
         }
 
         .result-img img {
           width: 100%;
           height: auto;
           display: block;
+          object-fit: cover;
         }
       </style>
 
@@ -1287,6 +1496,8 @@
         <div class="result-title">تنظيف البشرة — Skin Cleansing</div>
       </div>
     </div>
+    </div><!-- /scroll-anim-inner -->
+    </div><!-- /scroll-anim-outer -->
   </section>
 
   <!-- TESTIMONIALS -->
@@ -1294,8 +1505,7 @@
     <div class="testimonials-header">
       <div class="section-tag">Patient Reviews</div>
       <h2 class="section-title">What Our <em>Patients</em> Say</h2>
-      <p class="section-sub">Real feedback from our valued patients who trusted Panorama Clinics with their beauty
-        journey.</p>
+      <p class="section-sub text-reveal">Real feedback from our valued patients who trusted Panorama Clinics with their beauty journey.</p>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card animate">
@@ -1389,12 +1599,15 @@
   <div class="cta-banner">
     <h2>Ready to Start Your <em>Transformation</em>?</h2>
     <p>Book a consultation with our specialists today and discover how we can help you achieve your beauty goals.</p>
-    <a href="https://wa.me/201030777788" class="btn-cta" target="_blank">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-        <path
-          d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-      </svg>
-      WhatsApp Us — 01030777788
+    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-liquid-white" target="_blank" rel="noopener">
+      <span class="btn-liq-bg"></span>
+      <span class="btn-liq-shine"></span>
+      <span class="btn-liq-content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        WhatsApp Us — 01030777788
+      </span>
     </a>
   </div>
 
@@ -1459,19 +1672,78 @@
   </footer>
 
   <script>
-    // Nav scroll effect
+    /* ── NAV SCROLL ── */
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    });
+      updateScrollAnim();
+    }, { passive: true });
 
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.style.animationPlayState = 'running'; } });
+    /* ── FADE-UP ANIMATIONS ── */
+    const fadeObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.style.animationPlayState = 'running'; });
     }, { threshold: 0.1 });
     document.querySelectorAll('.animate').forEach(el => {
       el.style.animationPlayState = 'paused';
-      observer.observe(el);
+      fadeObs.observe(el);
     });
+
+    /* ── LIQUID GLASS FILTER ANIMATION ── */
+    (function animateLiquid() {
+      const idleTurb  = document.getElementById('liq-turb-idle');
+      const hoverTurb = document.getElementById('liq-turb-hover');
+      if (!idleTurb) return;
+      let t = 0;
+      function tick() {
+        t += 0.004;
+        const fi = (0.018 + Math.sin(t) * 0.005).toFixed(4);
+        const fj = (0.032 + Math.cos(t * 0.7) * 0.008).toFixed(4);
+        idleTurb.setAttribute('baseFrequency', fi + ' ' + fj);
+        const fhi = (0.035 + Math.sin(t * 1.6) * 0.01).toFixed(4);
+        const fhj = (0.060 + Math.cos(t * 1.2) * 0.015).toFixed(4);
+        hoverTurb.setAttribute('baseFrequency', fhi + ' ' + fhj);
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+
+    /* ── TEXT REVEAL ── */
+    document.querySelectorAll('.text-reveal').forEach(el => {
+      const raw = el.textContent.trim();
+      const words = raw.split(/\s+/);
+      el.innerHTML = words.map((w, i) =>
+        '<span class="reveal-word" style="transition-delay:' + (i * 55) + 'ms">' + w + '</span>'
+      ).join(' ');
+    });
+
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.reveal-word').forEach(w => w.classList.add('lit'));
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('.text-reveal').forEach(el => revealObs.observe(el));
+
+    /* ── CONTAINER SCROLL ANIMATION ── */
+    const scrollAnimEl = document.getElementById('results-scroll-anim');
+
+    function updateScrollAnim() {
+      if (!scrollAnimEl) return;
+      const rect = scrollAnimEl.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // progress 0→1 as element travels from bottom of screen to center
+      const raw = 1 - rect.top / vh;
+      const p = Math.max(0, Math.min(1, raw * 1.4));
+      const rotX  = 28 * (1 - p);
+      const scale = 0.86 + 0.14 * p;
+      const blur  = Math.max(0, (1 - p) * 3);
+      scrollAnimEl.style.transform = 'rotateX(' + rotX + 'deg) scale(' + scale + ')';
+      scrollAnimEl.style.filter    = blur > 0.1 ? 'blur(' + blur.toFixed(1) + 'px)' : '';
+    }
+
+    updateScrollAnim();
   </script>
 </body>
 
