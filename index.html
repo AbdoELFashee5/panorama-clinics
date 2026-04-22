@@ -539,6 +539,90 @@
     .hours-time { font-size: 0.88rem; color: var(--text-muted); }
     .hours-closed { color: var(--text-dim); font-style: italic; }
 
+    /* ── FAQ ── */
+    .faq-section { background: var(--bg); }
+    .faq-layout {
+      display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: start;
+    }
+    .faq-left {}
+    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+      overflow: hidden;
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border-light); }
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0; cursor: pointer;
+      font-weight: 600; font-size: 0.97rem; color: var(--text);
+      gap: 16px; user-select: none;
+      transition: color var(--t) var(--ease);
+      background: none; border: none; width: 100%; text-align: left;
+    }
+    .faq-question:hover { color: var(--gold-dark); }
+    .faq-chevron {
+      flex-shrink: 0; width: 20px; height: 20px;
+      stroke: var(--text-dim); fill: none; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: transform var(--t) var(--ease), stroke var(--t) var(--ease);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); stroke: var(--gold); }
+    .faq-item.open .faq-question { color: var(--gold-dark); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s var(--ease), padding 0.3s var(--ease);
+    }
+    .faq-answer-inner {
+      padding: 0 0 20px;
+      font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    /* ── FAQ INFO CARD ── */
+    .faq-info-card {
+      background: #0F1B2D;
+      border-radius: 20px; overflow: hidden;
+      position: sticky; top: 100px;
+    }
+    .faq-hours-block { padding: 36px 36px 28px; }
+    .faq-card-label {
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 20px;
+    }
+    .faq-hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.82rem;
+    }
+    .faq-hours-row:last-child { border-bottom: none; }
+    .faq-hours-day { color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.72rem; }
+    .faq-hours-time { color: rgba(255,255,255,0.9); font-weight: 500; }
+    .faq-hours-time.highlight { color: var(--gold); }
+
+    .faq-location-block {
+      margin: 0 24px 24px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px; padding: 20px 20px 16px;
+    }
+    .faq-location-addr {
+      color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.55; margin-bottom: 16px;
+    }
+    .faq-directions-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 13px;
+      background: white; color: #0F1B2D;
+      font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 10px;
+      transition: background var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .faq-directions-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .faq-directions-btn:hover { background: var(--gold); color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
+
+    @media (max-width: 1024px) {
+      .faq-layout { grid-template-columns: 1fr; gap: 48px; }
+      .faq-info-card { position: static; }
+    }
+
     /* ── FOOTER ── */
     .footer {
       background: #111;
@@ -637,6 +721,7 @@
       <a href="#services">Services</a>
       <a href="#results">Results</a>
       <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </div>
     <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="nav-phone" target="_blank" rel="noopener">
@@ -856,6 +941,85 @@
     </div>
   </section>
 
+  <!-- FAQ + INFO -->
+  <section class="faq-section" id="faq">
+    <div class="faq-layout">
+
+      <div class="faq-left">
+        <div class="section-tag animate">Common Questions</div>
+        <h2 class="section-title animate delay-1">Everything you need<br><em>before your first visit.</em></h2>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button class="faq-question" aria-expanded="true">
+              How do I book an appointment?
+              <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">The easiest way is to message us directly on WhatsApp at 01030777788 — our team will confirm your slot within minutes. You can also call during working hours.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do I need to bring anything to my first appointment?
+              <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">Just bring a valid ID and any previous medical reports relevant to your concern. Our specialists will take care of the rest and guide you through every step of your consultation.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What are the opening hours?
+              <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">We're open Saturday through Thursday from 10:00 AM to 10:00 PM. We are closed on Fridays. You can see the full schedule in the card to the right.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you treat all skin types?
+              <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Our board-certified dermatologists and laser specialists are experienced with all skin types, tones, and sensitivities. Every treatment plan is custom-built for you.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Will I know the cost before treatment begins?
+              <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">Yes — always. We provide a clear, transparent quote during your consultation before any procedure starts. No hidden fees, no surprises.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Is there a consultation fee?
+              <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">Contact us via WhatsApp and our team will let you know the current consultation details for your specific treatment area. We strive to make access as easy as possible.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-info-card animate-scale delay-2">
+        <div class="faq-hours-block">
+          <div class="faq-card-label">Opening Hours</div>
+          <div class="faq-hours-row">
+            <span class="faq-hours-day">Sat – Thu</span>
+            <span class="faq-hours-time">10:00 AM – 10:00 PM</span>
+          </div>
+          <div class="faq-hours-row">
+            <span class="faq-hours-day">Friday</span>
+            <span class="faq-hours-time highlight">Closed</span>
+          </div>
+        </div>
+        <div class="faq-location-block">
+          <div class="faq-card-label">Location</div>
+          <div class="faq-location-addr">Panorama Hair &amp; Skin Clinics<br>Egypt</div>
+          <a href="https://share.google/TOrDe0hFhCiWg0mrQ" class="faq-directions-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <h2 class="animate">Begin Your <em>Transformation</em> Today</h2>
@@ -1012,6 +1176,22 @@
       scrollAnimEl.style.transform = 'rotateX(' + rotX.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
     }
     updateScrollAnim();
+
+    /* ── FAQ ACCORDION ── */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
   </script>
 </body>
 </html>
