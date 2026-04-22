@@ -5,48 +5,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panorama Hair & Skin Clinics — Premium Aesthetic Medicine</title>
-  <meta name="description"
-    content="Panorama Hair & Skin Clinics — Premier destination for cosmetic surgery, dermatology, laser treatments, dental care, nutrition, and cosmetic obstetrics. Call 01030777788." />
+  <meta name="description" content="Panorama Hair & Skin Clinics — Premier destination for cosmetic surgery, dermatology, laser treatments, dental care, nutrition, and cosmetic obstetrics. Call 01030777788." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold: #C9A84C;
-      --gold-dark: #A8893A;
-      --gold-light: #E2D1A0;
-      --gold-glow: rgba(201, 168, 76, 0.15);
-      --gold-glow2: rgba(201, 168, 76, 0.08);
-      --white: #FFFFFF;
-      --off-white: #FDFBF7;
-      --cream: #F8F4EC;
-      --bg: #FFFFFF;
-      --surface: #FDFBF7;
-      --surface2: #F8F4EC;
-      --text: #1A1A1A;
-      --text-muted: #6B6B6B;
-      --text-dim: #999999;
-      --border: rgba(201, 168, 76, 0.2);
-      --border-light: rgba(201, 168, 76, 0.1);
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans: 'Inter', system-ui, sans-serif;
-      --radius: 12px;
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --gold:        #C9A84C;
+      --gold-dark:   #A8893A;
+      --gold-light:  #E2D1A0;
+      --gold-glow:   rgba(201,168,76,0.15);
+      --bg:          #FFFFFF;
+      --surface:     #FDFBF7;
+      --cream:       #F8F4EC;
+      --text:        #1A1A1A;
+      --text-muted:  #6B6B6B;
+      --text-dim:    #999999;
+      --border:      rgba(201,168,76,0.2);
+      --border-light:rgba(201,168,76,0.1);
+      --font-serif:  'Playfair Display', Georgia, serif;
+      --font-sans:   'Inter', system-ui, sans-serif;
+      --radius:      12px;
+      --ease:        cubic-bezier(0.4,0,0.2,1);
+      --t:           0.3s;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-sans);
@@ -56,1248 +42,591 @@
       overflow-x: hidden;
     }
 
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    ::selection { background: var(--gold); color: #fff; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+    a, button { cursor: pointer; }
 
-    ::-webkit-scrollbar-track {
-      background: var(--cream);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 3px;
-    }
-
-    ::selection {
-      background: var(--gold);
-      color: var(--white);
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    a, button {
-      cursor: pointer;
-    }
-
-    /* ── LIQUID GLASS BUTTONS ── */
-    .btn-liquid-glass,
-    .btn-liquid-ghost,
-    .btn-liquid-white {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 36px;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      background: transparent;
-      transition: transform var(--transition), color var(--transition);
-      overflow: visible;
-      isolation: isolate;
-    }
-
-    .btn-liquid-glass { color: white; }
-    .btn-liquid-ghost  { color: var(--gold-dark); letter-spacing: 0.08em; font-weight: 600; }
-    .btn-liquid-white  { color: var(--gold-dark); }
-
-    .btn-liq-bg {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      z-index: -1;
-      transition: filter 0.45s ease, box-shadow 0.3s ease, background 0.3s ease;
-    }
-
-    .btn-liquid-glass .btn-liq-bg {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
-      filter: url(#liq-idle);
-    }
-
-    .btn-liquid-ghost .btn-liq-bg {
-      background: rgba(201, 168, 76, 0.08);
-      border: 2px solid rgba(201, 168, 76, 0.5);
-      backdrop-filter: blur(12px);
-      filter: url(#liq-idle);
-    }
-
-    .btn-liquid-white .btn-liq-bg {
-      background: white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      filter: url(#liq-idle);
-    }
-
-    .btn-liq-shine {
-      position: absolute;
-      top: 3px;
-      left: 12px;
-      right: 12px;
-      height: 38%;
-      border-radius: 100px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.32), transparent);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .btn-liq-content {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-liquid-glass svg,
-    .btn-liquid-white svg { width: 16px; height: 16px; }
-    .btn-liquid-ghost svg  { width: 14px; height: 14px; }
-
-    .btn-liquid-glass:hover,
-    .btn-liquid-ghost:hover,
-    .btn-liquid-white:hover { transform: translateY(-3px); }
-
-    .btn-liquid-glass:hover .btn-liq-bg {
-      filter: url(#liq-hover);
-      box-shadow: 0 14px 44px rgba(201, 168, 76, 0.55);
-    }
-    .btn-liquid-ghost:hover .btn-liq-bg {
-      filter: url(#liq-hover);
-      background: var(--gold);
-    }
-    .btn-liquid-ghost:hover { color: white; }
-    .btn-liquid-white:hover .btn-liq-bg {
-      filter: url(#liq-hover);
-      box-shadow: 0 14px 44px rgba(0,0,0,0.18);
-    }
-
-    /* nav phone — smaller liquid glass */
-    .nav-phone-liq {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 24px;
-      color: white;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      transition: transform var(--transition);
-      border: none;
-      background: transparent;
-      isolation: isolate;
-    }
-    .nav-phone-liq .btn-liq-bg {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      box-shadow: 0 4px 16px rgba(201,168,76,0.3);
-      filter: url(#liq-idle);
-    }
-    .nav-phone-liq:hover { transform: translateY(-2px); }
-    .nav-phone-liq:hover .btn-liq-bg {
-      filter: url(#liq-hover);
-      box-shadow: 0 8px 30px rgba(201,168,76,0.45);
-    }
-    .nav-phone-liq svg { width: 16px; height: 16px; position: relative; }
-
-    /* ── TEXT REVEAL ── */
-    .text-reveal .reveal-word {
-      display: inline-block;
-      opacity: 0.12;
-      transition: opacity 0.55s ease;
-      will-change: opacity;
-    }
-    .text-reveal .reveal-word.lit {
-      opacity: 1;
-    }
-
-    /* ── CONTAINER SCROLL ANIMATION ── */
-    .scroll-anim-outer {
-      perspective: 1200px;
-      perspective-origin: 50% -10%;
-    }
-    .scroll-anim-inner {
-      transform-origin: top center;
-      will-change: transform;
-      transition: transform 0.08s linear;
+    /* ── SCROLL PROGRESS ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold-dark), var(--gold), var(--gold-light));
+      width: 0%;
+      z-index: 2000;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(201,168,76,0.6);
     }
 
     /* ── NAV ── */
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 18px 48px;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-light);
-      transition: all var(--transition);
+      transition: padding var(--t) var(--ease), box-shadow var(--t) var(--ease);
     }
-
     .nav.scrolled {
       padding: 12px 48px;
-      box-shadow: 0 4px 30px rgba(201, 168, 76, 0.08);
+      box-shadow: 0 4px 30px rgba(201,168,76,0.1);
     }
-
     .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--text);
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
     }
-
-    .nav-logo-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 700;
-    }
-
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .nav-logo-name {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--gold-dark);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .nav-logo-sub {
-      font-size: 0.65rem;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-    }
-
     .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
+      display: flex; gap: 32px; align-items: center;
     }
-
     .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color var(--transition);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color var(--t) var(--ease);
       position: relative;
     }
-
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
+      content: ''; position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
       background: var(--gold);
-      transition: width var(--transition);
+      transition: width var(--t) var(--ease);
     }
-
-    .nav-links a:hover {
-      color: var(--gold-dark);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover { color: var(--gold-dark); }
+    .nav-links a:hover::after { width: 100%; }
 
     .nav-phone {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
       padding: 10px 24px;
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: white;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      transition: all var(--transition);
+      color: white; border-radius: 100px;
+      text-decoration: none; font-weight: 600;
+      font-size: 0.85rem; letter-spacing: 0.04em;
       border: none;
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+      position: relative; overflow: hidden;
     }
-
-    .nav-phone:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.35);
+    .nav-phone::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.55s ease;
     }
+    .nav-phone:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+    .nav-phone:hover::after { transform: translateX(100%); }
+    .nav-phone svg { width: 16px; height: 16px; }
 
-    .nav-phone svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--gold-dark);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    .mobile-menu {
+    /* ── BOTTOM NAV (mobile) ── */
+    .bottom-nav {
       display: none;
       position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(255, 255, 255, 0.98);
+      bottom: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
       backdrop-filter: blur(20px);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
+      border-top: 1px solid var(--border-light);
+      padding: 8px 0 env(safe-area-inset-bottom, 8px);
+      grid-template-columns: repeat(5, 1fr);
     }
-
-    .mobile-menu.open {
-      display: flex;
-    }
-
-    .mobile-menu a {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      color: var(--text);
+    .bottom-nav-item {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 3px; padding: 6px 4px;
       text-decoration: none;
-      transition: color var(--transition);
+      color: var(--text-dim);
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color var(--t) var(--ease);
     }
-
-    .mobile-menu a:hover {
-      color: var(--gold);
+    .bottom-nav-item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .bottom-nav-item.active,
+    .bottom-nav-item:hover { color: var(--gold-dark); }
+    .bottom-nav-wa {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 3px; padding: 2px 4px;
+      text-decoration: none; position: relative;
     }
-
-    .mobile-menu-close {
+    .bottom-nav-wa-dot {
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.45);
+      margin-top: -18px;
+      border: 3px solid white;
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .bottom-nav-wa-dot::before {
+      content: '';
       position: absolute;
-      top: 24px;
-      right: 48px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--gold-dark);
-      font-size: 2rem;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.4);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: wa-pulse 2s ease-in-out infinite;
     }
+    .bottom-nav-wa-dot svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 1.8; }
+    .bottom-nav-wa:hover .bottom-nav-wa-dot { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201,168,76,0.55); }
+    .bottom-nav-wa span { font-size: 0.6rem; color: var(--gold-dark); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+
+    @keyframes wa-pulse {
+      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
+      50%       { transform: translate(-50%,-50%) scale(1.35); opacity: 0; }
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: white; font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 100px; border: none;
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.55s ease;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(201,168,76,0.5); }
+    .btn-primary:hover::after { transform: translateX(100%); }
+    .btn-primary svg { width: 16px; height: 16px; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 30px;
+      background: transparent; color: var(--gold-dark);
+      font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--gold);
+      border-radius: 100px;
+      transition: background var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .btn-ghost:hover { background: var(--gold); color: white; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(201,168,76,0.3); }
 
     /* ── HERO ── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
       padding: 120px 48px 80px;
       overflow: hidden;
       background-image: url('./images/Hero image.png');
       background-size: cover;
       background-position: right center;
       background-repeat: no-repeat;
+      background-attachment: fixed;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(to right,
-          rgba(255, 255, 255, 0.98) 0%,
-          rgba(255, 255, 255, 0.92) 35%,
-          rgba(255, 255, 255, 0.55) 58%,
-          rgba(255, 255, 255, 0.0) 100%);
-      z-index: 1;
-      pointer-events: none;
+        rgba(255,255,255,0.98) 0%,
+        rgba(255,255,255,0.92) 35%,
+        rgba(255,255,255,0.55) 58%,
+        rgba(255,255,255,0.0) 100%);
+      z-index: 1; pointer-events: none;
     }
-
-    .hero::after {
-      display: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 640px;
-    }
+    .hero-content { position: relative; z-index: 2; max-width: 640px; }
 
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
       margin-bottom: 24px;
+      animation: fadeUp 0.8s ease forwards;
     }
-
     .hero-eyebrow::before {
-      content: '';
-      width: 40px;
-      height: 2px;
+      content: ''; width: 40px; height: 2px;
       background: linear-gradient(to right, var(--gold), transparent);
     }
 
     .hero-title {
       font-family: var(--font-serif);
       font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-      font-weight: 700;
-      line-height: 1.08;
-      margin-bottom: 24px;
-      color: var(--text);
+      font-weight: 700; line-height: 1.08;
+      margin-bottom: 24px; color: var(--text);
+      animation: fadeUp 0.8s 0.1s ease both;
     }
-
-    .hero-title em {
-      font-style: normal;
-      color: var(--gold);
-    }
+    .hero-title em { font-style: italic; color: var(--gold); }
 
     .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 460px;
-      line-height: 1.8;
-      margin-bottom: 40px;
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 460px; line-height: 1.8; margin-bottom: 40px;
+      animation: fadeUp 0.8s 0.2s ease both;
     }
-
     .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
     }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 36px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: white;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition);
-      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(201, 168, 76, 0.45);
-    }
-
-    .btn-primary svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 30px;
-      background: transparent;
-      color: var(--gold-dark);
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 2px solid var(--gold);
-      border-radius: 100px;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .btn-ghost:hover {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    /* hero-visual removed — bg image used instead */
 
     /* ── STATS ── */
     .stats {
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      padding: 50px 48px;
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 60%, #D4B068 100%);
+      padding: 56px 48px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
+      position: relative;
+      overflow: hidden;
     }
-
+    .stats::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 120%, rgba(255,255,255,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
     .stat-item {
-      text-align: center;
-      padding: 16px 24px;
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center; padding: 20px 24px;
+      border-right: 1px solid rgba(255,255,255,0.18);
+      position: relative;
     }
-
-    .stat-item:last-child {
-      border-right: none;
+    .stat-item:last-child { border-right: none; }
+    .stat-icon {
+      display: flex; justify-content: center; margin-bottom: 10px;
     }
-
+    .stat-icon svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.7); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .stat-number {
       font-family: var(--font-serif);
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: white;
-      line-height: 1;
+      font-size: 3rem; font-weight: 700;
+      color: white; line-height: 1;
+      letter-spacing: -0.02em;
     }
-
     .stat-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-      margin-top: 8px;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.9); margin-top: 6px;
+    }
+    .stat-sub {
+      font-size: 0.68rem; color: rgba(255,255,255,0.6);
+      margin-top: 3px; letter-spacing: 0.04em;
     }
 
     /* ── SECTIONS ── */
-    section {
-      padding: 100px 48px;
-    }
+    section { padding: 100px 48px; }
 
     .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
       margin-bottom: 16px;
     }
-
-    .section-tag::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: var(--gold);
-    }
+    .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
 
     .section-title {
       font-family: var(--font-serif);
       font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 16px;
+      font-weight: 700; line-height: 1.15; margin-bottom: 16px;
     }
-
-    .section-title em {
-      font-style: normal;
-      color: var(--gold);
-    }
+    .section-title em { font-style: italic; color: var(--gold); }
 
     .section-sub {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 540px;
-      line-height: 1.75;
+      font-size: 1rem; color: var(--text-muted);
+      max-width: 540px; line-height: 1.75;
     }
 
     /* ── SERVICES ── */
-    .services {
-      background: var(--bg);
-    }
-
+    .services { background: var(--bg); }
     .services-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 64px;
-      flex-wrap: wrap;
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 40px;
+      margin-bottom: 64px; flex-wrap: wrap;
     }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 
     .service-card {
-      background: var(--surface);
-      padding: 44px 36px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      transition: all var(--transition);
-      cursor: default;
-      position: relative;
-      overflow: hidden;
+      background: var(--surface); padding: 44px 36px;
+      border: 1px solid var(--border-light); border-radius: var(--radius);
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
+      position: relative; overflow: hidden;
     }
-
     .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 100%; height: 3px;
       background: linear-gradient(to right, var(--gold), var(--gold-dark));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--t) var(--ease);
     }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(201, 168, 76, 0.12);
-      border-color: rgba(201, 168, 76, 0.3);
+    /* shimmer on hover */
+    .service-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(201,168,76,0.06) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
     }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(201,168,76,0.13); border-color: rgba(201,168,76,0.3); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover::after { transform: translateX(100%); }
 
     .service-icon {
-      width: 56px;
-      height: 56px;
+      width: 56px; height: 56px;
       background: var(--gold-glow);
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 1px solid rgba(201,168,76,0.2); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
       margin-bottom: 24px;
+      transition: background var(--t) var(--ease), transform var(--t) var(--ease);
     }
+    .service-card:hover .service-icon { background: rgba(201,168,76,0.22); transform: scale(1.08) rotate(-3deg); }
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .service-name { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 12px; }
+    .service-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; }
 
-    .service-icon svg {
-      width: 26px;
-      height: 26px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .service-name {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .service-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-    }
-
-    /* ── RESULTS / BEFORE-AFTER ── */
-    .results {
-      background: var(--surface);
-    }
-
-    .results-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .results-header .section-tag {
-      justify-content: center;
-    }
-
-    .results-header .section-tag::before {
-      display: none;
-    }
-
-    .results-header .section-sub {
-      margin: 0 auto;
-    }
-
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
+    /* ── RESULTS ── */
+    .results { background: var(--surface); }
+    .results-header { text-align: center; margin-bottom: 64px; }
+    .results-header .section-tag { justify-content: center; }
+    .results-header .section-tag::before { display: none; }
+    .results-header .section-sub { margin: 0 auto; }
+    .results-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
 
     .result-card {
-      background: var(--bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border-light);
-      transition: all var(--transition);
+      background: var(--bg); border-radius: var(--radius);
+      overflow: hidden; border: 1px solid var(--border-light);
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
     }
-
-    .result-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(201, 168, 76, 0.1);
-      cursor: pointer;
-    }
-
-    .result-images {
-      display: block;
-      position: relative;
-    }
-
-    .result-img {
-      width: 100%;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .result-img-before {
-      background: linear-gradient(135deg, #e8dcc8, #d4c5a9);
-    }
-
-    .result-img-after {
-      background: linear-gradient(135deg, #d4c5a9, #c9b88e);
-    }
-
-    .result-divider {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 36px;
-      height: 36px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      color: white;
-      font-weight: 700;
-      box-shadow: 0 4px 15px rgba(201, 168, 76, 0.4);
-      z-index: 2;
-    }
-
-    .result-labels {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      text-align: center;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
+    .result-card:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(201,168,76,0.14); }
+    .result-images { display: block; position: relative; }
+    .result-img { width: 100%; overflow: hidden; }
+    .result-img img { width: 100%; height: auto; display: block; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .result-card:hover .result-img img { transform: scale(1.04); }
     .result-title {
-      padding: 20px 24px;
-      text-align: center;
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--gold-dark);
+      padding: 20px 24px; text-align: center;
+      font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--gold-dark);
     }
+
+    /* ── SCROLL ANIMATION WRAPPER ── */
+    .scroll-anim-outer { perspective: 1200px; perspective-origin: 50% -10%; }
+    .scroll-anim-inner { transform-origin: top center; will-change: transform; }
 
     /* ── TESTIMONIALS ── */
-    .testimonials {
-      background: var(--bg);
-    }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .testimonials-header .section-tag {
-      justify-content: center;
-    }
-
-    .testimonials-header .section-tag::before {
-      display: none;
-    }
-
-    .testimonials-header .section-sub {
-      margin: 0 auto;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+    .testimonials { background: var(--bg); }
+    .testimonials-header { text-align: center; margin-bottom: 64px; }
+    .testimonials-header .section-tag { justify-content: center; }
+    .testimonials-header .section-tag::before { display: none; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 
     .testimonial-card {
-      background: var(--surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      transition: all var(--transition);
+      background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: var(--radius); padding: 36px 32px;
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
       position: relative;
     }
-
-    .testimonial-card:hover {
-      border-color: rgba(201, 168, 76, 0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(201, 168, 76, 0.08);
+    .testimonial-card::before {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--gold-dark));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--t) var(--ease);
+      border-radius: 0 0 var(--radius) var(--radius);
     }
+    .testimonial-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); box-shadow: 0 18px 45px rgba(201,168,76,0.1); }
+    .testimonial-card:hover::before { transform: scaleX(1); }
 
-    .testimonial-quote {
-      font-family: var(--font-serif);
-      font-size: 4rem;
-      line-height: 0.6;
-      color: var(--gold);
-      opacity: 0.3;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-stars svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--gold);
-    }
-
-    .testimonial-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    .testimonial-quote { font-family: var(--font-serif); font-size: 4rem; line-height: 0.6; color: var(--gold); opacity: 0.3; margin-bottom: 16px; }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testimonial-stars svg { width: 14px; height: 14px; fill: var(--gold); }
+    .testimonial-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
     .testimonial-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+      width: 44px; height: 44px; border-radius: 50%;
       background: var(--gold-glow);
-      border: 1px solid rgba(201, 168, 76, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-serif);
-      font-weight: 700;
-      color: var(--gold);
+      border: 1.5px solid rgba(201,168,76,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-weight: 700; color: var(--gold); font-size: 1rem;
     }
-
-    .testimonial-name {
-      font-weight: 600;
-      font-size: 0.88rem;
-    }
-
-    .testimonial-source {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
+    .testimonial-name { font-weight: 600; font-size: 0.88rem; }
+    .testimonial-source { font-size: 0.72rem; color: var(--text-dim); margin-top: 2px; }
 
     /* ── CTA BANNER ── */
     .cta-banner {
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      padding: 80px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold) 55%, #D4B068 100%);
+      padding: 90px 48px; text-align: center;
+      position: relative; overflow: hidden;
     }
-
     .cta-banner::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
+      content: ''; position: absolute;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 68%);
+      animation: pulse-glow 4s ease-in-out infinite;
     }
-
+    @keyframes pulse-glow {
+      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
+      50%       { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+    }
     .cta-banner h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 700;
-      color: white;
-      margin-bottom: 16px;
-      position: relative;
+      font-family: var(--font-serif); font-size: clamp(1.8rem,3.5vw,3rem);
+      font-weight: 700; color: white; margin-bottom: 16px; position: relative;
     }
-
+    .cta-banner h2 em { font-style: italic; }
     .cta-banner p {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 480px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
-      position: relative;
+      font-size: 1rem; color: rgba(255,255,255,0.85);
+      max-width: 480px; margin: 0 auto 36px; line-height: 1.7; position: relative;
     }
-
-    .cta-banner .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 36px;
-      background: white;
-      color: var(--gold-dark);
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: all var(--transition);
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 40px;
+      background: white; color: var(--gold-dark);
+      font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 100px;
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+      position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
-
-    .cta-banner .btn-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    .btn-cta::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(201,168,76,0.12) 50%, transparent 70%);
+      transform: translateX(-100%); transition: transform 0.55s ease;
     }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.18); }
+    .btn-cta:hover::after { transform: translateX(100%); }
+    .btn-cta svg { width: 18px; height: 18px; }
 
     /* ── CONTACT ── */
-    .contact {
-      background: var(--surface);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .contact-info {
-      padding: 80px 64px 80px 48px;
-      border-right: 1px solid var(--border-light);
-    }
-
-    .contact-details {
-      margin-top: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
+    .contact { background: var(--surface); display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .contact-info { padding: 80px 64px 80px 48px; border-right: 1px solid var(--border-light); }
+    .contact-details { margin-top: 36px; display: flex; flex-direction: column; gap: 24px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
     .contact-item-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--gold-glow);
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 44px; height: 44px; background: var(--gold-glow);
+      border: 1px solid rgba(201,168,76,0.2); border-radius: 11px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: background var(--t) var(--ease), transform var(--t) var(--ease);
     }
-
-    .contact-item-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 1.5;
-    }
-
-    .contact-item-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 3px;
-    }
-
-    .contact-item-value {
-      font-size: 0.92rem;
-      color: var(--text);
-      text-decoration: none;
-      line-height: 1.5;
-      transition: color var(--transition);
-    }
-
-    a.contact-item-value:hover {
-      color: var(--gold);
-    }
-
-    .contact-socials {
-      display: flex;
-      gap: 12px;
-      margin-top: 36px;
-    }
-
+    .contact-item:hover .contact-item-icon { background: rgba(201,168,76,0.25); transform: scale(1.06); }
+    .contact-item-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-item-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .contact-item-value { font-size: 0.92rem; color: var(--text); text-decoration: none; line-height: 1.5; transition: color var(--t); }
+    a.contact-item-value:hover { color: var(--gold); }
+    .contact-socials { display: flex; gap: 12px; margin-top: 36px; }
     .social-btn {
-      width: 44px;
-      height: 44px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
+      width: 44px; height: 44px; background: white;
+      border: 1px solid var(--border); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--t), border-color var(--t), transform var(--t);
       text-decoration: none;
     }
-
-    .social-btn:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
-    .social-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--gold);
-      transition: fill var(--transition);
-    }
-
-    .social-btn:hover svg {
-      fill: white;
-    }
-
-    .contact-hours {
-      padding: 80px 48px 80px 64px;
-    }
-
-    .hours-table {
-      margin-top: 36px;
-      width: 100%;
-    }
-
+    .social-btn:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-3px); }
+    .social-btn svg { width: 18px; height: 18px; fill: var(--gold); transition: fill var(--t); }
+    .social-btn:hover svg { fill: white; }
+    .contact-hours { padding: 80px 48px 80px 64px; }
+    .hours-table { margin-top: 36px; width: 100%; }
     .hours-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border-light);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0; border-bottom: 1px solid var(--border-light);
+      transition: padding-left var(--t) var(--ease);
     }
-
-    .hours-day {
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    .hours-time {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
+    .hours-row:hover { padding-left: 6px; }
+    .hours-day { font-weight: 500; font-size: 0.9rem; }
+    .hours-time { font-size: 0.88rem; color: var(--text-muted); }
+    .hours-closed { color: var(--text-dim); font-style: italic; }
 
     /* ── FOOTER ── */
     .footer {
-      background: #1A1A1A;
-      color: rgba(255, 255, 255, 0.6);
+      background: #111;
+      color: rgba(255,255,255,0.5);
       padding: 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
     }
+    .footer-logo { font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold); font-weight: 700; letter-spacing: 0.1em; }
+    .footer-copy { font-size: 0.78rem; }
 
-    .footer-logo {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      color: var(--gold);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-
-    .footer-copy {
-      font-size: 0.78rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-      font-size: 0.78rem;
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--gold);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav-hamburger {
-        display: flex;
-      }
-
-      .services-grid,
-      .results-grid,
-      .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .contact {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        display: none;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav {
-        padding: 14px 20px;
-      }
-
-      section {
-        padding: 60px 20px;
-      }
-
-      .hero {
-        padding: 100px 20px 60px;
-        background-position: 72% center;
-        background-size: cover;
-        min-height: 100svh;
-      }
-
-      .hero::before {
-        background: linear-gradient(to right,
-          rgba(255, 255, 255, 0.97) 0%,
-          rgba(255, 255, 255, 0.93) 42%,
-          rgba(255, 255, 255, 0.55) 65%,
-          rgba(255, 255, 255, 0.0) 100%);
-      }
-
-      .services-grid,
-      .results-grid,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: 1fr 1fr;
-        padding: 30px 20px;
-      }
-
-      .contact-info,
-      .contact-hours {
-        padding: 60px 20px;
-      }
-
-      .footer {
-        padding: 30px 20px;
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-title {
-        font-size: 2.2rem;
-      }
-    }
-
-    /* ── REDUCED MOTION ── */
-    @media (prefers-reduced-motion: reduce) {
-      .animate {
-        opacity: 1;
-        animation: none;
-      }
-      * {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-    }
+    /* ── TEXT REVEAL ── */
+    .text-reveal .reveal-word { display: inline-block; opacity: 0.12; transition: opacity 0.55s ease; }
+    .text-reveal .reveal-word.lit { opacity: 1; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .animate {
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
+      animation: fadeUp 0.75s var(--ease) forwards;
+      animation-play-state: paused;
+    }
+    .animate-scale {
+      opacity: 0;
+      animation: scaleIn 0.7s var(--ease) forwards;
+      animation-play-state: paused;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .bottom-nav { display: grid; }
+      body { padding-bottom: 68px; }
+      .services-grid, .results-grid, .testimonials-grid { grid-template-columns: repeat(2,1fr); }
+      .contact { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 640px) {
+      .nav { padding: 14px 20px; }
+      section { padding: 60px 20px; }
+      .hero {
+        padding: 100px 20px 60px;
+        background-position: 72% center;
+        background-attachment: scroll;
+        min-height: 100svh;
+      }
+      .hero::before {
+        background: linear-gradient(to right,
+          rgba(255,255,255,0.97) 0%,
+          rgba(255,255,255,0.93) 42%,
+          rgba(255,255,255,0.55) 65%,
+          rgba(255,255,255,0.0) 100%);
+      }
+      .hero-title { font-size: 2.2rem; }
+      .services-grid, .results-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; padding: 36px 20px; }
+      .contact-info, .contact-hours { padding: 60px 20px; }
+      .footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+      .cta-banner { padding: 60px 24px; }
     }
 
-    .delay-1 {
-      animation-delay: 0.1s;
-    }
-
-    .delay-2 {
-      animation-delay: 0.2s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.3s;
-    }
-
-    .delay-4 {
-      animation-delay: 0.4s;
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .animate, .animate-scale { opacity: 1; animation: none; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- LIQUID GLASS SVG FILTERS -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;pointer-events:none;overflow:hidden">
-    <defs>
-      <filter id="liq-idle" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-        <feTurbulence id="liq-turb-idle" type="fractalNoise" baseFrequency="0.018 0.032" numOctaves="3" seed="7" result="noise"/>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-      <filter id="liq-hover" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
-        <feTurbulence id="liq-turb-hover" type="fractalNoise" baseFrequency="0.035 0.06" numOctaves="3" seed="12" result="noise"/>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </defs>
-  </svg>
+  <!-- SCROLL PROGRESS -->
+  <div id="progress-bar"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -1310,71 +639,80 @@
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="nav-phone-liq" target="_blank" rel="noopener">
-      <span class="btn-liq-bg"></span>
-      <span class="btn-liq-shine"></span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-      </svg>
+    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="nav-phone" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       01030777788
     </a>
-    <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"
-      aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu">
-    <button class="mobile-menu-close" onclick="this.parentElement.classList.remove('open')">&times;</button>
-    <a href="#services" onclick="this.parentElement.classList.remove('open')">Services</a>
-    <a href="#results" onclick="this.parentElement.classList.remove('open')">Results</a>
-    <a href="#testimonials" onclick="this.parentElement.classList.remove('open')">Reviews</a>
-    <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
-    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-liquid-glass" target="_blank" rel="noopener" style="font-size:0.9rem;">
-      <span class="btn-liq-bg"></span>
-      <span class="btn-liq-shine"></span>
-      <span class="btn-liq-content">WhatsApp 01030777788</span>
+  <!-- BOTTOM NAV (mobile) -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <a href="#services" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Services</span>
     </a>
-  </div>
+    <a href="#results" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>Results</span>
+    </a>
+    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="bottom-nav-wa" target="_blank" rel="noopener">
+      <div class="bottom-nav-wa-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <span>Book Now</span>
+    </a>
+    <a href="#testimonials" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <span>Reviews</span>
+    </a>
+    <a href="#contact" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content animate">
+    <div class="hero-content">
       <div class="hero-eyebrow">Premium Aesthetic Medicine</div>
-      <h1 class="hero-title">Your Beauty, <br>Our <em>Expertise</em></h1>
-      <p class="hero-sub text-reveal">Panorama Hair &amp; Skin Clinics — your premier destination for cosmetic surgery, dermatology,
-        laser treatments, and complete aesthetic care.</p>
+      <h1 class="hero-title">Your Beauty,<br>Our <em>Expertise</em></h1>
+      <p class="hero-sub text-reveal">Where science meets artistry — Panorama Clinics delivers world-class cosmetic surgery, dermatology, and aesthetic treatments tailored to reveal your finest self.</p>
       <div class="hero-ctas">
-        <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-liquid-glass" target="_blank" rel="noopener">
-          <span class="btn-liq-bg"></span>
-          <span class="btn-liq-shine"></span>
-          <span class="btn-liq-content">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-            </svg>
-            Book Now
-          </span>
+        <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-primary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Book a Consultation
         </a>
-        <a href="#services" class="btn-liquid-ghost">
-          <span class="btn-liq-bg"></span>
-          <span class="btn-liq-shine"></span>
-          <span class="btn-liq-content">Our Services</span>
-        </a>
+        <a href="#services" class="btn-ghost">Explore Services</a>
       </div>
     </div>
   </section>
 
   <!-- STATS -->
-  <div class="stats">
-    <div class="stat-item animate delay-1"><span class="stat-number">6+</span><span
-        class="stat-label">Specialties</span></div>
-    <div class="stat-item animate delay-2"><span class="stat-number">10K+</span><span class="stat-label">Happy
-        Patients</span></div>
-    <div class="stat-item animate delay-3"><span class="stat-number">15+</span><span class="stat-label">Expert
-        Doctors</span></div>
-    <div class="stat-item animate delay-4"><span class="stat-number">5★</span><span class="stat-label">Patient
-        Rating</span></div>
+  <div class="stats" id="stats">
+    <div class="stat-item animate delay-1">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <div class="stat-number" data-target="6" data-suffix="+">0</div>
+      <div class="stat-label">Medical Specialties</div>
+      <div class="stat-sub">Full-spectrum aesthetic care</div>
+    </div>
+    <div class="stat-item animate delay-2">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="stat-number" data-target="10000" data-suffix="+" data-display="10K">0</div>
+      <div class="stat-label">Patients Treated</div>
+      <div class="stat-sub">Across all specialties</div>
+    </div>
+    <div class="stat-item animate delay-3">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <div class="stat-number" data-target="15" data-suffix="+">0</div>
+      <div class="stat-label">Certified Specialists</div>
+      <div class="stat-sub">Board-certified experts</div>
+    </div>
+    <div class="stat-item animate delay-4">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="stat-number" data-target="5" data-suffix=".0">0</div>
+      <div class="stat-label">Average Star Rating</div>
+      <div class="stat-sub">Consistently excellent</div>
+    </div>
   </div>
 
   <!-- SERVICES -->
@@ -1382,70 +720,40 @@
     <div class="services-header">
       <div>
         <div class="section-tag">What We Offer</div>
-        <h2 class="section-title">Comprehensive <em>Aesthetic</em> Care</h2>
-        <p class="section-sub text-reveal">From cosmetic surgery to nutrition counseling, we provide a full spectrum of beauty and
-          wellness treatments.</p>
+        <h2 class="section-title animate">Comprehensive <em>Aesthetic</em> Care</h2>
+        <p class="section-sub text-reveal">From transformative cosmetic surgery to personalized nutrition counseling — we offer a complete spectrum of beauty and wellness treatments under one roof.</p>
       </div>
     </div>
     <div class="services-grid">
-      <div class="service-card animate">
-        <div class="service-icon"><svg viewBox="0 0 24 24">
-            <path d="M12 2a10 10 0 0110 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
-            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-            <line x1="9" y1="9" x2="9.01" y2="9" />
-            <line x1="15" y1="9" x2="15.01" y2="9" />
-          </svg></div>
+      <div class="service-card animate-scale">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0110 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
         <h3 class="service-name">Cosmetic Surgery</h3>
-        <p class="service-desc">جراحة تجميلية — Advanced cosmetic surgical procedures performed by board-certified
-          specialists for transformative results.</p>
+        <p class="service-desc">Advanced surgical procedures performed by board-certified specialists — delivering safe, precise, and transformative aesthetic outcomes.</p>
       </div>
-      <div class="service-card animate delay-1">
-        <div class="service-icon"><svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3" />
-            <path
-              d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-          </svg></div>
+      <div class="service-card animate-scale delay-1">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
         <h3 class="service-name">Cosmetic Dermatology</h3>
-        <p class="service-desc">جلدية تجميلية — Skin rejuvenation, acne treatment, anti-aging solutions, and
-          personalized skincare protocols.</p>
+        <p class="service-desc">Clinically proven skin rejuvenation, acne solutions, anti-aging protocols, and bespoke skincare programs crafted for your unique skin profile.</p>
       </div>
-      <div class="service-card animate delay-2">
-        <div class="service-icon"><svg viewBox="0 0 24 24">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-          </svg></div>
+      <div class="service-card animate-scale delay-2">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <h3 class="service-name">Laser Treatments</h3>
-        <p class="service-desc">ليزر — State-of-the-art laser technology for hair removal, skin resurfacing,
-          pigmentation correction, and more.</p>
+        <p class="service-desc">State-of-the-art laser technology for permanent hair removal, skin resurfacing, pigmentation correction, and vascular therapy.</p>
       </div>
-      <div class="service-card animate delay-1">
-        <div class="service-icon"><svg viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-            <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="white" fill="none" />
-          </svg></div>
-        <h3 class="service-name">Dental Care</h3>
-        <p class="service-desc">أسنان — Cosmetic dentistry including veneers, whitening, smile design, and complete
-          dental restoration services.</p>
+      <div class="service-card animate-scale delay-1">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg></div>
+        <h3 class="service-name">Aesthetic Dental Care</h3>
+        <p class="service-desc">Comprehensive smile design including porcelain veneers, professional whitening, and full cosmetic dental restoration by expert clinicians.</p>
       </div>
-      <div class="service-card animate delay-2">
-        <div class="service-icon"><svg viewBox="0 0 24 24">
-            <path d="M18 8h1a4 4 0 010 8h-1" />
-            <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" />
-            <line x1="6" y1="1" x2="6" y2="4" />
-            <line x1="10" y1="1" x2="10" y2="4" />
-            <line x1="14" y1="1" x2="14" y2="4" />
-          </svg></div>
-        <h3 class="service-name">Nutrition</h3>
-        <p class="service-desc">تغذية — Expert dietary guidance and personalized nutrition plans to support your health
-          and beauty goals from within.</p>
+      <div class="service-card animate-scale delay-2">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <h3 class="service-name">Clinical Nutrition</h3>
+        <p class="service-desc">Evidence-based dietary guidance and personalized nutrition plans — supporting your health, energy, and beauty goals from the inside out.</p>
       </div>
-      <div class="service-card animate delay-3">
-        <div class="service-icon"><svg viewBox="0 0 24 24">
-            <path
-              d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-          </svg></div>
+      <div class="service-card animate-scale delay-3">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
         <h3 class="service-name">Cosmetic Obstetrics</h3>
-        <p class="service-desc">نساء وولادة تجميلية — Specialized cosmetic gynecology and post-partum body contouring
-          treatments.</p>
+        <p class="service-desc">Specialized cosmetic gynecology and post-partum body contouring — helping women reclaim confidence at every stage of life.</p>
       </div>
     </div>
   </section>
@@ -1453,82 +761,54 @@
   <!-- BEFORE & AFTER RESULTS -->
   <section class="results" id="results">
     <div class="results-header">
-      <div class="section-tag">Real Results</div>
-      <h2 class="section-title">Before &amp; <em>After</em></h2>
-      <p class="section-sub text-reveal">See the transformative results our patients have experienced with our expert treatments.</p>
+      <div class="section-tag animate">Real Results</div>
+      <h2 class="section-title animate delay-1">Before &amp; <em>After</em></h2>
+      <p class="section-sub text-reveal">Real transformations from real patients — because results speak louder than promises.</p>
     </div>
     <div class="scroll-anim-outer">
-    <div class="scroll-anim-inner" id="results-scroll-anim">
-    <div class="results-grid">
-      <style>
-        .result-img {
-          overflow: hidden;
-          border-radius: 12px 12px 0 0;
-          width: 100%;
-        }
-
-        .result-img img {
-          width: 100%;
-          height: auto;
-          display: block;
-          object-fit: cover;
-        }
-      </style>
-
-      <div class="result-card animate">
-        <div class="result-images">
-          <div class="result-img"><img src="./images/Hip dippers before and after.jpg"
-              alt="Hip Dip Filler Before & After" /></div>
+      <div class="scroll-anim-inner" id="results-scroll-anim">
+        <div class="results-grid">
+          <div class="result-card animate-scale">
+            <div class="result-images">
+              <div class="result-img"><img src="./images/Hip dippers before and after.jpg" alt="Hip Dip Filler Before & After" loading="lazy"/></div>
+            </div>
+            <div class="result-title">Hip Dip Filler — حقن خفسات</div>
+          </div>
+          <div class="result-card animate-scale delay-1">
+            <div class="result-images">
+              <div class="result-img"><img src="./images/Lip plasma vbefore adn after.jpg" alt="Lip Plasma Before & After" loading="lazy"/></div>
+            </div>
+            <div class="result-title">Lip Plasma — بلازما الشفايف</div>
+          </div>
+          <div class="result-card animate-scale delay-2">
+            <div class="result-images">
+              <div class="result-img"><img src="./images/Skin cleaning before and after.jpg" alt="Skin Cleansing Before & After" loading="lazy"/></div>
+            </div>
+            <div class="result-title">Skin Cleansing — تنظيف البشرة</div>
+          </div>
         </div>
-        <div class="result-title">حقن خفسات — Hip Dip Filler</div>
-      </div>
-      <div class="result-card animate delay-1">
-        <div class="result-images">
-          <div class="result-img"><img src="./images/Lip plasma vbefore adn after.jpg"
-              alt="Lip Plasma Before & After" /></div>
-        </div>
-        <div class="result-title">بلازما الشفايف — Lip Plasma</div>
-      </div>
-      <div class="result-card animate delay-2">
-        <div class="result-images">
-          <div class="result-img"><img src="./images/Skin cleaning before and after.jpg"
-              alt="Skin Cleansing Before & After" /></div>
-        </div>
-        <div class="result-title">تنظيف البشرة — Skin Cleansing</div>
       </div>
     </div>
-    </div><!-- /scroll-anim-inner -->
-    </div><!-- /scroll-anim-outer -->
   </section>
 
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="testimonials">
     <div class="testimonials-header">
-      <div class="section-tag">Patient Reviews</div>
-      <h2 class="section-title">What Our <em>Patients</em> Say</h2>
-      <p class="section-sub text-reveal">Real feedback from our valued patients who trusted Panorama Clinics with their beauty journey.</p>
+      <div class="section-tag animate">Patient Reviews</div>
+      <h2 class="section-title animate delay-1">What Our <em>Patients</em> Say</h2>
+      <p class="section-sub text-reveal">Trusted by thousands — here is what our patients say about their Panorama experience.</p>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card animate">
+      <div class="testimonial-card animate-scale">
         <div class="testimonial-quote">"</div>
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg></div>
-        <p class="testimonial-text">Amazing experience! The team was professional and the results exceeded my
-          expectations. Highly recommend Panorama Clinics.</p>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">Exceptional experience from start to finish. The team's professionalism and attention to detail exceeded every expectation. I feel truly transformed.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">S</div>
           <div>
@@ -1537,26 +817,16 @@
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate delay-1">
+      <div class="testimonial-card animate-scale delay-1">
         <div class="testimonial-quote">"</div>
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg></div>
-        <p class="testimonial-text">Best clinic I've visited. The laser treatment results were incredible and the staff
-          made me feel completely comfortable throughout.</p>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">The laser results were nothing short of remarkable. The clinic's state-of-the-art technology combined with a caring team made for a seamless experience.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">N</div>
           <div>
@@ -1565,26 +835,16 @@
           </div>
         </div>
       </div>
-      <div class="testimonial-card animate delay-2">
+      <div class="testimonial-card animate-scale delay-2">
         <div class="testimonial-quote">"</div>
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg><svg viewBox="0 0 24 24">
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg></div>
-        <p class="testimonial-text">The skin cleansing session was life-changing. My skin has never looked this clear.
-          Thank you Panorama team for the amazing care!</p>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">My skin cleansing treatment was genuinely life-changing. I walked out glowing. Panorama's experts truly understand what their patients need — and deliver beyond expectations.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">M</div>
           <div>
@@ -1598,17 +858,11 @@
 
   <!-- CTA BANNER -->
   <div class="cta-banner">
-    <h2>Ready to Start Your <em>Transformation</em>?</h2>
-    <p>Book a consultation with our specialists today and discover how we can help you achieve your beauty goals.</p>
-    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-liquid-white" target="_blank" rel="noopener">
-      <span class="btn-liq-bg"></span>
-      <span class="btn-liq-shine"></span>
-      <span class="btn-liq-content">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-        </svg>
-        WhatsApp Us — 01030777788
-      </span>
+    <h2 class="animate">Begin Your <em>Transformation</em> Today</h2>
+    <p class="animate delay-1">Schedule a private consultation with our specialists and take the first step toward the confident, radiant version of yourself.</p>
+    <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="btn-cta animate delay-2" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      WhatsApp Us — 01030777788
     </a>
   </div>
 
@@ -1617,50 +871,36 @@
     <div class="contact-info">
       <div class="section-tag">Get In Touch</div>
       <h2 class="section-title">Visit <em>Panorama</em></h2>
-      <p class="section-sub">We'd love to welcome you. Reach out to book your appointment or learn more about our
-        services.</p>
+      <p class="section-sub">We'd love to welcome you. Reach out to book your private consultation or learn more about our treatments.</p>
       <div class="contact-details">
         <div class="contact-item">
-          <div class="contact-item-icon"><svg viewBox="0 0 24 24">
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-            </svg></div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
           <div>
             <span class="contact-item-label">Phone / WhatsApp</span>
-            <a href="https://wa.me/201030777788" class="contact-item-value" target="_blank">01030777788</a>
+            <a href="https://wa.me/201030777788?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Panorama%20Clinics" class="contact-item-value" target="_blank" rel="noopener">01030777788</a>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon"><svg viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg></div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <span class="contact-item-label">Location</span>
             <span class="contact-item-value">Egypt — Visit our clinic for a personalized consultation</span>
           </div>
         </div>
       </div>
-
     </div>
     <div class="contact-hours">
       <div class="section-tag">Working Hours</div>
       <h2 class="section-title">Our <em>Schedule</em></h2>
-      <p class="section-sub">We're here to serve you throughout the week.</p>
+      <p class="section-sub">Our specialists are available six days a week to serve you.</p>
       <div class="hours-table">
-        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">10:00 AM – 10:00
-            PM</span></div>
-        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">10:00 AM – 10:00 PM</span>
-        </div>
-        <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">10:00 AM – 10:00 PM</span>
-        </div>
-        <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">10:00 AM – 10:00 PM</span>
-        </div>
-        <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">10:00 AM – 10:00
-            PM</span></div>
-        <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">10:00 AM – 10:00
-            PM</span></div>
-        <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">Closed</span></div>
+        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time hours-closed">Closed</span></div>
       </div>
     </div>
   </section>
@@ -1669,83 +909,109 @@
   <footer class="footer">
     <div class="footer-logo">PANORAMA CLINICS</div>
     <div class="footer-copy">&copy; 2025 Panorama Hair &amp; Skin Clinics. All rights reserved.</div>
-
   </footer>
 
   <script>
+    /* ── SCROLL PROGRESS BAR ── */
+    const bar = document.getElementById('progress-bar');
+    function updateBar() {
+      const d = document.documentElement;
+      bar.style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+    }
+
     /* ── NAV SCROLL ── */
-    window.addEventListener('scroll', () => {
+    function onScroll() {
+      updateBar();
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
       updateScrollAnim();
-    }, { passive: true });
+      highlightBottomNav();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* ── FADE-UP ANIMATIONS ── */
-    const fadeObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.style.animationPlayState = 'running'; });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate').forEach(el => {
+    /* ── BOTTOM NAV ACTIVE STATE ── */
+    const sections = ['services','results','testimonials','contact'];
+    function highlightBottomNav() {
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < window.innerHeight * 0.5) current = id;
+      });
+      document.querySelectorAll('.bottom-nav-item').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+
+    /* ── INTERSECTION OBSERVER — fade animations ── */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.animationPlayState = 'running';
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.animate, .animate-scale').forEach(el => {
       el.style.animationPlayState = 'paused';
-      fadeObs.observe(el);
+      obs.observe(el);
     });
 
-    /* ── LIQUID GLASS FILTER ANIMATION ── */
-    (function animateLiquid() {
-      const idleTurb  = document.getElementById('liq-turb-idle');
-      const hoverTurb = document.getElementById('liq-turb-hover');
-      if (!idleTurb) return;
-      let t = 0;
-      function tick() {
-        t += 0.004;
-        const fi = (0.018 + Math.sin(t) * 0.005).toFixed(4);
-        const fj = (0.032 + Math.cos(t * 0.7) * 0.008).toFixed(4);
-        idleTurb.setAttribute('baseFrequency', fi + ' ' + fj);
-        const fhi = (0.035 + Math.sin(t * 1.6) * 0.01).toFixed(4);
-        const fhj = (0.060 + Math.cos(t * 1.2) * 0.015).toFixed(4);
-        hoverTurb.setAttribute('baseFrequency', fhi + ' ' + fhj);
-        requestAnimationFrame(tick);
-      }
-      tick();
-    })();
+    /* ── COUNTER ANIMATION ── */
+    function animateCounter(el) {
+      const target  = +el.dataset.target;
+      const display = el.dataset.display;
+      const suffix  = el.dataset.suffix || '';
+      if (display) { el.textContent = display + suffix; return; }
+      const dur = 1800;
+      const step = 16;
+      const steps = dur / step;
+      let current = 0;
+      const inc = target / steps;
+      const timer = setInterval(() => {
+        current = Math.min(current + inc, target);
+        el.textContent = (target < 100 ? current.toFixed(target === 5 ? 0 : 0) : Math.round(current)) + suffix;
+        if (current >= target) clearInterval(timer);
+      }, step);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    const statsEl = document.getElementById('stats');
+    if (statsEl) counterObs.observe(statsEl);
 
     /* ── TEXT REVEAL ── */
     document.querySelectorAll('.text-reveal').forEach(el => {
-      const raw = el.textContent.trim();
-      const words = raw.split(/\s+/);
+      const words = el.textContent.trim().split(/\s+/);
       el.innerHTML = words.map((w, i) =>
-        '<span class="reveal-word" style="transition-delay:' + (i * 55) + 'ms">' + w + '</span>'
+        '<span class="reveal-word" style="transition-delay:' + (i * 50) + 'ms">' + w + '</span>'
       ).join(' ');
     });
-
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.reveal-word').forEach(w => w.classList.add('lit'));
-          revealObs.unobserve(entry.target);
+    const revObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.reveal-word').forEach(w => w.classList.add('lit'));
+          revObs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.25 });
-
-    document.querySelectorAll('.text-reveal').forEach(el => revealObs.observe(el));
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.text-reveal').forEach(el => revObs.observe(el));
 
     /* ── CONTAINER SCROLL ANIMATION ── */
     const scrollAnimEl = document.getElementById('results-scroll-anim');
-
     function updateScrollAnim() {
       if (!scrollAnimEl) return;
       const rect = scrollAnimEl.getBoundingClientRect();
-      const vh = window.innerHeight;
-      // progress 0→1 as element travels from bottom of screen to center
-      const raw = 1 - rect.top / vh;
-      const p = Math.max(0, Math.min(1, raw * 1.4));
-      const rotX  = 28 * (1 - p);
-      const scale = 0.86 + 0.14 * p;
-      const blur  = Math.max(0, (1 - p) * 3);
-      scrollAnimEl.style.transform = 'rotateX(' + rotX + 'deg) scale(' + scale + ')';
-      scrollAnimEl.style.filter    = blur > 0.1 ? 'blur(' + blur.toFixed(1) + 'px)' : '';
+      const p = Math.max(0, Math.min(1, (1 - rect.top / window.innerHeight) * 1.4));
+      const rotX  = 26 * (1 - p);
+      const scale = 0.87 + 0.13 * p;
+      scrollAnimEl.style.transform = 'rotateX(' + rotX.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
     }
-
     updateScrollAnim();
   </script>
 </body>
-
 </html>
